@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: stadiums-service
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://pitches-managment-stadiums-service.ch2e01owm84h.us-east-1.rds.amazonaws.com:3306/pitchesManagmentStadiumsService
+    username: postgresUser
+    password: 123456789
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+

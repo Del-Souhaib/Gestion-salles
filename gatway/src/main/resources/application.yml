@@ -1,1 +1,21 @@
-fff:
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: security-service
+          uri: /api/users
+          predicates:
+            - Method=GET,POST,PUT, DELETE
+        - id: stadiums-service
+          uri: /api/pitches
+          predicates:
+            - Method= GET,POST,PUT, DELETE
+        - id: reservations-service
+          uri: /api/reservations
+          predicates:
+            - Method= GET,POST,PUT, DELETE
+
+
