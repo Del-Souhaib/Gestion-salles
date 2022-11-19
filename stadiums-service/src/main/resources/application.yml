@@ -6,7 +6,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://pitches-managment-stadiums-service.ch2e01owm84h.us-east-1.rds.amazonaws.com:3306/pitchesManagmentStadiumsService
+    url: jdbc:postgresql://pitches-managment-stadiums-service.ch2e01owm84h.us-east-1.rds.amazonaws.com:5432/pitchesManagmentStadiumsService
     username: postgresUser
     password: 123456789
 

@@ -8,7 +8,7 @@ spring:
         - id: discovery-server
           uri: http://locahost:8761
           predicates:
-            - Path= /eureka/**
+            - Path=  /eureka/**
 
         - id: security-service
           uri: lb://security-service

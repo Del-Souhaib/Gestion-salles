@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: notifications-service
+  mail:
+    host: email-smtp.us-east-1.amazonaws.com
+    username: AKIAV7YZHWJQBRV3PEZC
+    password: BPlojpTPYxIWpw2Y8/vhk3U7gBxiK02O4CjvO3av+4Vo
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          port: 587
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+
+server:
+  port: 8084
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+

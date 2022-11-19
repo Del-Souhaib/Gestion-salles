@@ -10,20 +10,18 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Reservation {
+public class Payment {
 
     @Id
     private String id;
 
-    private Long owner;
-
     private Long responsable;
 
-    private List<Long> players;
+    private Reservation reservation;
 
-    private Date dateReservation;
+    private String type;
 
-    private Long pitch;
+    private Double amount;
 
     private Date created_at;
 
