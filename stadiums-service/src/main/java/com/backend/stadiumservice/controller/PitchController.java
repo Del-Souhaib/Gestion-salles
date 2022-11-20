@@ -16,7 +16,7 @@ public class PitchController {
     @Autowired
     private PitchRepository pitchRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Pitch> pitchList(){
         return pitchRepository.findAll();
     }
@@ -29,14 +29,14 @@ public class PitchController {
 
 
 
-    @PostMapping("/")
+    @PostMapping("")
     public void addPitch(@RequestParam("user") String data, @RequestParam(name = "image",required = false) MultipartFile image) throws IOException {
         ObjectMapper objectMapper=new ObjectMapper();
         Pitch Pitch =objectMapper.readValue(data, Pitch.class);
         pitchRepository.save(Pitch);
     }
 
-    @PutMapping("/")
+    @PutMapping("")
     public void updatePitch(@RequestParam("user") String data, @RequestParam(name = "image",required = false)MultipartFile image) throws IOException {
         ObjectMapper objectMapper=new ObjectMapper();
         Pitch Pitch =objectMapper.readValue(data, Pitch.class);

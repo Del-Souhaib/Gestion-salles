@@ -16,5 +16,6 @@
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/stadiums-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/stadiums-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/storage-service/src/main/java" charset="UTF-8" />
   </component>
 </project>

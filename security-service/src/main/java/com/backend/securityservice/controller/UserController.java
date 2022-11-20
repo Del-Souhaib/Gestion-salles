@@ -16,7 +16,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<MyUser> userList(){
         return userRepository.findAll();
     }
@@ -41,14 +41,14 @@ public class UserController {
 //        return userRepository.findAllByRole_Nom(role);
 //    }
 
-    @PostMapping("/")
+    @PostMapping("")
     public void addUser(@RequestParam("user") String data, @RequestParam(name = "image",required = false)MultipartFile image) throws IOException {
         ObjectMapper objectMapper=new ObjectMapper();
         MyUser myUser =objectMapper.readValue(data, MyUser.class);
         userRepository.save(myUser);
     }
 
-    @PutMapping("/")
+    @PutMapping("")
     public void updateUser(@RequestParam("user") String data, @RequestParam(name = "image",required = false)MultipartFile image) throws IOException {
         ObjectMapper objectMapper=new ObjectMapper();
         MyUser myUser =objectMapper.readValue(data, MyUser.class);

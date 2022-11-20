@@ -18,7 +18,7 @@ public class NotificationController {
 
     @GetMapping("")
     public void sendInvitationMail() throws MessagingException {
-        String[] mails={"souhaib2.allout@gmail.com"};
+        String[] mails={"del.souhaib@gmail.com"};
         notificationService.SendMail(mails,"test","just test");
     }
 

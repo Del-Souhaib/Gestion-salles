@@ -19,7 +19,7 @@ public class PitchRateController {
     @Autowired
     private PitchRateRepository pitchRateRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<PitchRate> pitchRateList(){
         return pitchRateRepository.findAll();
     }
@@ -29,18 +29,14 @@ public class PitchRateController {
         return pitchRateRepository.getOne(id);
     }
 
-    @PostMapping("/")
-    public void addPitchRate(@RequestParam("user") String data, @RequestParam(name = "image",required = false) MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        PitchRate PitchRate =objectMapper.readValue(data, PitchRate.class);
-        pitchRateRepository.save(PitchRate);
+    @PostMapping("")
+    public void addPitchRate(@RequestBody PitchRate pitchRate) {
+        pitchRateRepository.save(pitchRate);
     }
 
-    @PutMapping("/")
-    public void updatePitchRate(@RequestParam("user") String data, @RequestParam(name = "image",required = false)MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        PitchRate PitchRate =objectMapper.readValue(data, PitchRate.class);
-        pitchRateRepository.save(PitchRate);
+    @PutMapping("")
+    public void updatePitchRate(@RequestBody PitchRate pitchRate) {
+        pitchRateRepository.save(pitchRate);
     }
 
 

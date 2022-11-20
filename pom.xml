@@ -18,9 +18,9 @@
         <module>reservation-service</module>
         <module>notification-service</module>
         <module>gatway</module>
-        <module>aws-cloud</module>
         <module>discovery-server</module>
         <module>security-service</module>
+        <module>storage-service</module>
     </modules>
 
     <properties>

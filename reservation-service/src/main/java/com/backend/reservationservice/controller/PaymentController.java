@@ -1,6 +1,7 @@
 package com.backend.reservationservice.controller;
 
 import com.backend.reservationservice.model.Payment;
+import com.backend.reservationservice.model.Reservation;
 import com.backend.reservationservice.repository.PaymentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Payment> PaymentList(){
         return paymentRepository.findAll();
     }
@@ -27,17 +28,13 @@ public class PaymentController {
         return paymentRepository.findFirstById(id);
     }
 
-    @PostMapping("/")
-    public void addPayment(@RequestParam("user") String data, @RequestParam(name = "image",required = false) MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        Payment payment =objectMapper.readValue(data, Payment.class);
+    @PostMapping("")
+    public void addPayment(@RequestBody Payment payment ) throws IOException {
         paymentRepository.save(payment);
     }
 
-    @PutMapping("/")
-    public void updatePayment(@RequestParam("user") String data, @RequestParam(name = "image",required = false)MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        Payment payment =objectMapper.readValue(data, Payment.class);
+    @PutMapping("")
+    public void updatePayment(@RequestBody Payment payment) throws IOException {
         paymentRepository.save(payment);
     }
 

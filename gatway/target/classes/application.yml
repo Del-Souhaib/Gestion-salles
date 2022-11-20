@@ -1,6 +1,15 @@
 server:
   port: 8080
 
+eureka:
+  instance:
+    hostname: localhost
+
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
 spring:
   cloud:
     gateway:
@@ -8,12 +17,12 @@ spring:
         - id: discovery-server
           uri: http://locahost:8761
           predicates:
-            - Path=  /eureka/**
+            - Path= /eureka/**
 
         - id: security-service
           uri: lb://security-service
           predicates:
-            - Path=  /api/users/** , /api/roles/** , /api/playerRates/**
+            - Path=/api/users/**, /api/roles/** , /api/playerRates/**
 
         - id: stadiums-service
           uri: lb://stadiums-service

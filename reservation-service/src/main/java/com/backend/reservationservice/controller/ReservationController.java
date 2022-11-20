@@ -17,7 +17,7 @@ public class ReservationController {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Reservation> ReservationList(){
         return reservationRepository.findAll();
     }
@@ -27,17 +27,13 @@ public class ReservationController {
         return reservationRepository.findFirstById(id);
     }
 
-    @PostMapping("/")
-    public void addReservation(@RequestParam("user") String data, @RequestParam(name = "image",required = false) MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        Reservation reservation =objectMapper.readValue(data, Reservation.class);
+    @PostMapping("")
+    public void addReservation(@RequestBody Reservation reservation)  {
         reservationRepository.save(reservation);
     }
 
-    @PutMapping("/")
-    public void updateReservation(@RequestParam("user") String data, @RequestParam(name = "image",required = false)MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        Reservation reservation =objectMapper.readValue(data, Reservation.class);
+    @PutMapping("")
+    public void updateReservation(@RequestBody Reservation reservation)  {
         reservationRepository.save(reservation);
     }
 

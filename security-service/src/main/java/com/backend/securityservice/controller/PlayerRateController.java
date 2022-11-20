@@ -18,7 +18,7 @@ public class PlayerRateController {
     @Autowired
     private PlayerRateRepository playerRateRepository;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<PlayerRate> PlayerRateList(){
         return playerRateRepository.findAll();
     }
@@ -28,18 +28,14 @@ public class PlayerRateController {
         return playerRateRepository.getOne(id);
     }
 
-    @PostMapping("/")
-    public void addPitchRate(@RequestParam("user") String data, @RequestParam(name = "image",required = false) MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        PlayerRate PlayerRate =objectMapper.readValue(data, PlayerRate.class);
-        playerRateRepository.save(PlayerRate);
+    @PostMapping("")
+    public void addPlayerRate(@RequestBody PlayerRate playerRate)  {
+        playerRateRepository.save(playerRate);
     }
 
-    @PutMapping("/")
-    public void updatePlayerRate(@RequestParam("user") String data, @RequestParam(name = "image",required = false)MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        PlayerRate PlayerRate =objectMapper.readValue(data, PlayerRate.class);
-        playerRateRepository.save(PlayerRate);
+    @PutMapping("")
+    public void updatePlayerRate(@RequestBody PlayerRate playerRate)  {
+        playerRateRepository.save(playerRate);
     }
 
 

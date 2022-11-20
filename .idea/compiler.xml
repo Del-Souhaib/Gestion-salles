@@ -7,16 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="aws-cloud" />
         <module name="discovery-server" />
         <module name="gatway" />
         <module name="stadiums-service" />
         <module name="reservation-service" />
         <module name="security-service" />
+        <module name="storage-service" />
         <module name="notification-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="aws-cloud" target="18" />
       <module name="security-servicehhhhh" target="18" />
     </bytecodeTargetLevel>
   </component>
@@ -30,6 +31,7 @@
       <module name="security-service" options="-parameters" />
       <module name="security-servicehhhhh" options="-parameters" />
       <module name="stadiums-service" options="-parameters" />
+      <module name="storage-service" options="-parameters" />
     </option>
   </component>
 </project>

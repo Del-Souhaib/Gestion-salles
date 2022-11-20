@@ -41,7 +41,7 @@ public class NotificationService {
 
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-        helper.setFrom("info@pitchesManagment.com");
+        helper.setFrom("souhaib2.allout@gmail.com");
         helper.setTo(to);
         helper.setSubject(subject);
         String htmltemplate="<i>test</i>";
