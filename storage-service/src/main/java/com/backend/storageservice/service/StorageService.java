@@ -1,8 +1,12 @@
 package com.backend.storageservice.service;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.TransferManagerBuilder;
+import com.amazonaws.util.IOUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -17,22 +21,30 @@ import java.io.InputStream;
 @AllArgsConstructor
 public class StorageService {
 
-    private AmazonS3 amazonS3;
-    private ResourceLoader resourceLoader;
+    AmazonS3 amazonS3;
 
-    public void upload( String filename, MultipartFile file) {
-        TransferManager transferManager = TransferManagerBuilder.standard()
-                .withS3Client(this.amazonS3)
-                .build();
-        transferManager.upload("pitchs-management",filename, (File) file);
+    public void uploadFile( String path, MultipartFile file) throws IOException {
+
+        ObjectMetadata objectMetadata = new ObjectMetadata();
+        objectMetadata.addUserMetadata("Content-Type", file.getContentType());
+        objectMetadata.addUserMetadata("Content-Length", String.valueOf(file.getSize()));
+
+        amazonS3.putObject(
+                String.valueOf("pitchs-management"),
+                path,
+                file.getInputStream(),
+                objectMetadata
+        );
+
     }
 
-
-    public InputStream download(String file) throws IOException {
-        Resource resource = this.resourceLoader.getResource("s3://pitchs-management/"+file);
-
-        InputStream inputStream = resource.getInputStream();
-        return inputStream;
-        //read file
+    public byte[] downloadFile( String path) {
+        S3Object s3object = amazonS3.getObject("pitchs-management", path);
+        S3ObjectInputStream inputStream = s3object.getObjectContent();
+        try {
+            return IOUtils.toByteArray(inputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  rabbitmq:
+    container_name: PitchsManagmentRabbitMqContainer
+    image: rabbitmq:latest
+    ports:
+      - "7077:15672"
+      - "5672:5672"
+    environment:
+      user: rabbitMqUser
+      password: 123456789
+
+

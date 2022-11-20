@@ -15,13 +15,21 @@ public class StorageController {
     @Autowired
     StorageService storageService;
 
-    @GetMapping("")
-    public InputStream GetImage(@RequestParam String file) throws IOException {
-        return storageService.download(file);
+    @GetMapping("imageUrl")
+    public byte[] getImage(@RequestParam("filePath") String filePath) throws IOException {
+        return storageService.downloadFile(filePath);
     }
 
-    @PostMapping("")
-    public void StorageImage(@RequestParam String fileName, @RequestParam MultipartFile file) {
-        storageService.upload(fileName, file);
+
+    @PostMapping("uploadFile")
+    public void uploadImage(@RequestParam("filePath") String filePath,
+                            @RequestParam("file") MultipartFile file)  {
+//        System.out.println("here "+bucket+"  +  "+filePath);
+        try {
+            storageService.uploadFile(filePath,file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
