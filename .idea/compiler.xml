@@ -12,6 +12,7 @@
         <module name="stadiums-service" />
         <module name="reservation-service" />
         <module name="security-service" />
+        <module name="rabbitMqQueue" />
         <module name="storage-service" />
         <module name="notification-service" />
       </profile>
@@ -27,6 +28,7 @@
       <module name="discovery-server" options="-parameters" />
       <module name="gatway" options="-parameters" />
       <module name="notification-service" options="-parameters" />
+      <module name="rabbitMqQueue" options="-parameters" />
       <module name="reservation-service" options="-parameters" />
       <module name="security-service" options="-parameters" />
       <module name="security-servicehhhhh" options="-parameters" />

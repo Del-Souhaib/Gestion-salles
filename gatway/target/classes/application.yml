@@ -39,4 +39,8 @@ spring:
           predicates:
             - Path=  /api/notifications/**
 
+        - id: storage-service
+          uri: lb://storage-service
+          predicates:
+            - Path=  /api/storage/**
 

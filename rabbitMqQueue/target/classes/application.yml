@@ -1,10 +1,10 @@
 spring:
   application:
-    name: storage-service
+    name: rabbitMq
 
 
 server:
-  port: 8085
+  port: 8086
 
 eureka:
   instance:
