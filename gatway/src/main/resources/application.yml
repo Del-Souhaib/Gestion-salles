@@ -48,5 +48,7 @@ spring:
           uri: lb://rabbitMq
           predicates:
             - Path=  /api/queues/**
+  application:
+    name: gatWay
 
 

@@ -37,10 +37,18 @@ spring:
         - id: notifications-service
           uri: lb://notifications-service
           predicates:
-            - Path=  /api/notifications/**
+            - Path=  /api/notifications/** , /api/messages/**
 
         - id: storage-service
           uri: lb://storage-service
           predicates:
             - Path=  /api/storage/**
+
+        - id: rabbitMq
+          uri: lb://rabbitMq
+          predicates:
+            - Path=  /api/queues/**
+  application:
+    name: gatWay
+
 

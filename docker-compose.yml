@@ -2,11 +2,13 @@ version: '3'
 
 services:
   rabbitmq:
-    container_name: PitchsManagmentRabbitMqContainer
-    image: rabbitmq:latest
+    container_name: RabbitMq
+    image: rabbitmq:3.9.8-management-alpine
     ports:
-      - "7077:15672"
       - "5672:5672"
+      - "15672:15672"
+
+
     environment:
       user: rabbitMqUser
       password: 123456789
