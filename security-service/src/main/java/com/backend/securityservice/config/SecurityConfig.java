@@ -23,8 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
-        http.authorizeRequests().antMatchers("/login").permitAll();
-        http.authorizeRequests().antMatchers("/api/users").hasAnyRole();
+        http.authorizeRequests().antMatchers("/login","/api/users/**").permitAll();
+//        http.authorizeRequests().antMatchers("/api/users").hasAnyRole();
+        http.csrf().disable();
     }
 
     @Bean

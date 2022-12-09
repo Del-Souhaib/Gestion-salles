@@ -42,9 +42,7 @@ public class UserController {
 //    }
 
     @PostMapping("")
-    public void addUser(@RequestParam("user") String data, @RequestParam(name = "image",required = false)MultipartFile image) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        MyUser myUser =objectMapper.readValue(data, MyUser.class);
+    public void addUser(@RequestBody MyUser myUser)  {
         userRepository.save(myUser);
     }
 

@@ -30,9 +30,10 @@ public class PitchController {
 
 
     @PostMapping("")
-    public void addPitch(@RequestParam("user") String data, @RequestParam(name = "image",required = false) MultipartFile image) throws IOException {
+    public void addPitch(@RequestParam("data") String data, @RequestParam(name = "image",required = false) MultipartFile image) throws IOException {
         ObjectMapper objectMapper=new ObjectMapper();
         Pitch Pitch =objectMapper.readValue(data, Pitch.class);
+
         pitchRepository.save(Pitch);
     }
 
