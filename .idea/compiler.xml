@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="discovery-server" />
         <module name="gatway" />
+        <module name="openfeign-service" />
         <module name="stadiums-service" />
         <module name="reservation-service" />
         <module name="security-service" />
@@ -28,6 +29,7 @@
       <module name="discovery-server" options="-parameters" />
       <module name="gatway" options="-parameters" />
       <module name="notification-service" options="-parameters" />
+      <module name="openfeign-service" options="-parameters" />
       <module name="rabbitMqQueue" options="-parameters" />
       <module name="reservation-service" options="-parameters" />
       <module name="security-service" options="-parameters" />

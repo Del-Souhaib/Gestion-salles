@@ -22,6 +22,7 @@
         <module>security-service</module>
         <module>storage-service</module>
         <module>rabbitMqQueue</module>
+        <module>openfeign-service</module>
     </modules>
 
     <properties>

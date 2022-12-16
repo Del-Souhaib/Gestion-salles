@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,5 +31,14 @@ public class Pitch {
     private String location;
 
     @OneToMany
-    private List<Image> images;
+    private List<PitchImage> images;
+
+
+    public List<PitchImage> getImages() {
+        if(images==null){
+            images=new ArrayList<>();
+        }
+        return images;
+    }
+
 }
