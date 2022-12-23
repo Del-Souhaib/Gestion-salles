@@ -2,7 +2,7 @@ package com.example.openfeign;
 
 public class gg {
 
-    private void test(){
+    private void testjjj(){
 
     }
 }
