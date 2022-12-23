@@ -30,15 +30,15 @@ public class Pitch {
 
     private String location;
 
-    @OneToMany
+    @OneToMany(mappedBy = "pitch",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PitchImage> images;
 
 
-    public List<PitchImage> getImages() {
-        if(images==null){
-            images=new ArrayList<>();
-        }
-        return images;
-    }
+//    public List<PitchImage> getImages() {
+//        if(images==null){
+//            images=new ArrayList<>();
+//        }
+//        return images;
+//    }
 
 }

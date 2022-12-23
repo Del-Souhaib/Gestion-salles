@@ -10,13 +10,13 @@ import java.io.InputStream;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pitches")
+@RequestMapping("/api/storage")
 public class StorageController {
 
     @Autowired
     StorageService storageService;
 
-    @GetMapping("imageUrl")
+    @GetMapping("")
     public byte[] getImage(@RequestParam("filePath") String filePath) throws IOException {
         return storageService.downloadFile(filePath);
     }

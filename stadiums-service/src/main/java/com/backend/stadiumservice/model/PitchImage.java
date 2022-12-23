@@ -16,7 +16,11 @@ public class PitchImage {
     @Column(name = "id", nullable = false)
     private Long id;
 
-  private  String name;
 
+    private String name;
+
+    @ManyToOne
+    @JsonIgnore
+    private Pitch pitch;
 
 }

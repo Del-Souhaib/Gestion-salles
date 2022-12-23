@@ -48,17 +48,25 @@ public class PitchController {
         ObjectMapper objectMapper = new ObjectMapper();
         Pitch pitch = objectMapper.readValue(data, Pitch.class);
         pitchRepository.save(pitch);
+
         log.info(Arrays.toString(dataImages));
         for (MultipartFile image : dataImages) {
             PitchImage pitchImage = pitchImageRepository.save(new PitchImage());
             String imageName = "pitches/pitches-images/" + pitchImage.getId() + "." + image.getContentType().split("/")[1];
-log.info(imageName);
+
+            log.info("-------------------------------hrtr------------------------------");
+
+            log.info(imageName);
             pitchImage.setName(imageName);
+            pitchImage.setPitch(pitch);
             pitchImageRepository.save(pitchImage);
-            pitch.getImages().add(pitchImage);
+//            pitch.getImages().add(pitchImage);
+
 
             storageService.uploadFile(imageName, image);
         }
+//        pitchRepository.save(pitch);
+
     }
 
     @PutMapping("")
@@ -70,7 +78,15 @@ log.info(imageName);
 
 
     @DeleteMapping("/{id}")
-    public void deletePitch(@PathVariable("id") Long id) {
+    public List<Pitch> deletePitch(@PathVariable("id") Long id) {
         pitchRepository.deleteById(id);
+        return pitchRepository.findAll();
     }
+
+    @DeleteMapping("/all")
+    public List<Pitch> deleteAllPitch() {
+        pitchRepository.deleteAll();
+        return pitchRepository.findAll();
+    }
+
 }

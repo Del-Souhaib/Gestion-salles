@@ -11,12 +11,11 @@ import java.util.List;
 @FeignClient("storage-service")
 public interface OFStorageController {
 
-    @GetMapping("/api/pitches/imageUrl")
-     byte[] getImage(@RequestParam("filePath") String filePath);
+    @GetMapping("/api/storage/imageUrl")
+    byte[] getImage(@RequestParam("filePath") String filePath);
 
-
-    @PostMapping( value = "/api/pitches/uploadFile",consumes = "multipart/form-data")
-     void uploadImage(@RequestParam("filePath") String filePath,
-                            @RequestParam("file") MultipartFile file);
+    @PostMapping( value = "/api/storage/uploadFile",consumes = "multipart/form-data")
+    void uploadImage(@RequestParam("filePath") String filePath,
+                     @RequestParam("file") MultipartFile file);
 
 }
