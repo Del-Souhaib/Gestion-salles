@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PitchRepository extends JpaRepository<Pitch,Long> {
+
+    Pitch findFirstById(Long id);
 }

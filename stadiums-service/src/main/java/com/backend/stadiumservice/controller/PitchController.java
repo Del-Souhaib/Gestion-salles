@@ -38,8 +38,9 @@ public class PitchController {
 
     @GetMapping("/{id}")
     public Pitch pitch(@PathVariable("id") Long id) {
-        return pitchRepository.getOne(id);
+        return pitchRepository.findFirstById(id);
     }
+
 
 
     @PostMapping(value = "")
