@@ -27,7 +27,7 @@ spring:
         - id: stadiums-service
           uri: lb://stadiums-service
           predicates:
-            - Path=  /api/pitches/** , /api/pitchRates/**
+            - Path=  /api/pitches/** , /api/pitchRates/** , /api/villes/**
 
         - id: reservations-service
           uri: lb://reservations-service

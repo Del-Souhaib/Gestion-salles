@@ -36,6 +36,13 @@ public class PitchController {
         return pitchRepository.findAll();
     }
 
+    @GetMapping("/search")
+    public List<Pitch> pitchList(@RequestParam(name = "capacity",required = false) Integer capacity,
+                                 @RequestParam(name = "isCovered",required = false) boolean isCovered,
+                                 @RequestParam(name = "ville",required = false) Long ville) {
+        return pitchRepository.search(capacity,ville);
+    }
+
     @GetMapping("/{id}")
     public Pitch pitch(@PathVariable("id") Long id) {
         return pitchRepository.findFirstById(id);

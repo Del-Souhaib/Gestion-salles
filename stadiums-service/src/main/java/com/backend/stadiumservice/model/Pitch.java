@@ -30,8 +30,15 @@ public class Pitch {
 
     private String location;
 
+
+    @ManyToOne
+    @JoinColumn(name = "ville_id",updatable = false,insertable = false)
+    private Ville ville;
+
     @OneToMany(mappedBy = "pitch",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PitchImage> images;
+
+    private Long ville_id;
 
 
 //    public List<PitchImage> getImages() {
