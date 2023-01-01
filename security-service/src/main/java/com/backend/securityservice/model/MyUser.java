@@ -30,6 +30,8 @@ public class MyUser {
     private String password;
 
     @ManyToOne
+    @JoinColumn(name = "role_id",insertable = false,updatable = false)
     private Role role;
 
+    private Long role_id;
 }

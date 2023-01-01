@@ -3,7 +3,10 @@ package com.backend.securityservice.controller;
 import com.backend.securityservice.model.MyUser;
 import com.backend.securityservice.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +19,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @GetMapping("")
     public List<MyUser> userList(){
         return userRepository.findAll();
@@ -43,7 +48,9 @@ public class UserController {
 
     @PostMapping("")
     public void addUser(@RequestBody MyUser myUser)  {
+        myUser.setPassword(passwordEncoder.encode(myUser.getPassword()));
         userRepository.save(myUser);
+//        userRepository.save(myUser)
     }
 
     @PutMapping("")

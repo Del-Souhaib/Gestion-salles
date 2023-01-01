@@ -37,17 +37,22 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        String username, password;
-        try {
-            Map<String, String> requestMap = new ObjectMapper().readValue(request.getInputStream(), Map.class);
-            username = requestMap.get("username");
-            password = requestMap.get("password");
+//        String username, password;
 
-            UsernamePasswordAuthenticationToken authRequest = UsernamePasswordAuthenticationToken.unauthenticated(username, password);
-            return authenticationManager.authenticate(authRequest);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        String username=request.getParameter("username");
+        String password=request.getParameter("password");
+        log.info(username+" "+password);
+
+        UsernamePasswordAuthenticationToken authRequest = UsernamePasswordAuthenticationToken.unauthenticated(username, password);
+        return authenticationManager.authenticate(authRequest);
+
+//        try {
+//            Map<String, String> requestMap = new ObjectMapper().readValue(request.getInputStream(), Map.class);
+//            username = requestMap.get("username");
+//            password = requestMap.get("password");
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
         //        return new UsernamePasswordAuthenticationToken(username, password);
     }

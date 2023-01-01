@@ -22,7 +22,7 @@ spring:
         - id: security-service
           uri: lb://security-service
           predicates:
-            - Path=/api/users/**, /api/roles/** , /api/playerRates/**
+            - Path=/api/users/**, /api/roles/** , /api/playerRates/** , /api/login
 
         - id: stadiums-service
           uri: lb://stadiums-service

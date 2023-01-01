@@ -3,9 +3,7 @@ package com.backend.securityservice.controller;
 import com.backend.securityservice.model.Role;
 import com.backend.securityservice.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +16,11 @@ public class RoleController {
     @GetMapping
     public List<Role> roleList(){
         return roleRepository.findAll();
+    }
+
+    @PostMapping
+    public void addList(@RequestBody Role role){
+         roleRepository.save(role);
     }
 
 }
