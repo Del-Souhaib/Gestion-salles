@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 import java.util.List;
@@ -17,14 +19,14 @@ public class Payment {
     private String id;
 
     private Long responsable;
-
-    @JsonIgnore
+    @Field("reservation_id")
+    @DocumentReference(lookup = "{ 'id' : ?#{#target} }")
     private Reservation reservation;
 
     private String type;
 
     private Double amount;
 
-    private Date created_at;
+    private Date created_at=new Date();
 
 }

@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.ws.rs.PathParam;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +45,13 @@ public class ReservationController {
     @GetMapping("/{id}")
     public Reservation Reservation(@PathVariable("id") String id){
         return reservationRepository.findFirstById(id);
+    }
+
+    @PostMapping("/addPlayerToReservation")
+    public void addPlayerToReservation(@PathParam("reservation_id") String reservation_id,@PathParam("player_id") Long player_id)  {
+        Reservation reservation=reservationRepository.findFirstById(reservation_id);
+        reservation.getPlayers().add(player_id);
+        reservationRepository.save(reservation);
     }
 
     @PostMapping("")

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,4 +35,7 @@ public class MyUser {
     private Role role;
 
     private Long role_id;
+
+    @OneToMany(mappedBy = "player")
+    private List<PlayerRate> rates;
 }

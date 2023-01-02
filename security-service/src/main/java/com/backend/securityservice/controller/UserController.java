@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,6 +25,17 @@ public class UserController {
     @GetMapping("")
     public List<MyUser> userList(){
         return userRepository.findAll();
+    }
+
+    @GetMapping("/test")
+    public List<MyUser> test(){
+        return userRepository.test();
+    }
+
+    @PostMapping("/byReservation")
+    public List<MyUser> userList(@RequestBody List<Long> players_ids){
+//        List<MyUser> players=new ArrayList<>();
+        return userRepository.findAllByIdIsIn(players_ids);
     }
 
     @GetMapping("/{id}")

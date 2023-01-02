@@ -35,10 +35,13 @@ public class Pitch {
     @JoinColumn(name = "ville_id",updatable = false,insertable = false)
     private Ville ville;
 
+    private Long ville_id;
+
     @OneToMany(mappedBy = "pitch",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PitchImage> images;
 
-    private Long ville_id;
+    @OneToMany(mappedBy = "pitch",fetch = FetchType.EAGER)
+    private List<PitchRate> pitchRates;
 
 
 //    public List<PitchImage> getImages() {
