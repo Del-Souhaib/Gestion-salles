@@ -27,6 +27,9 @@ public class Reservation {
 
     private Long pitch;
 
-    private Date created_at;
+
+    private Date created_at=new Date();
+
+    private List<Payment> payments;
 
 }

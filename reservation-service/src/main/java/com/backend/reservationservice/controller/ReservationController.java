@@ -36,6 +36,10 @@ public class ReservationController {
         log.info(String.valueOf(date));
         return reservationRepository.existsAllByDateReservation(date);
     }
+    @GetMapping("/byClient/{id}")
+    public List<Reservation> ReservationListByClient(@PathVariable("id") Long id){
+        return reservationRepository.findAllByOwner(id);
+    }
 
     @GetMapping("/{id}")
     public Reservation Reservation(@PathVariable("id") String id){

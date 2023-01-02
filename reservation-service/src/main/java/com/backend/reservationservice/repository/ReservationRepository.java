@@ -13,6 +13,9 @@ public interface ReservationRepository extends MongoRepository<Reservation,Strin
     Reservation findFirstById(String id);
 
     List<Reservation> findAllByPitch(Long id);
+
+    List<Reservation> findAllByOwner(Long id);
+
     boolean existsAllByDateReservation(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date);
 
 }
