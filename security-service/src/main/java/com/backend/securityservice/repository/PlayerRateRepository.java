@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlayerRateRepository extends JpaRepository<PlayerRate,Long> {
+
+    PlayerRate findFirstByReservationAndPlayer_id(String reservation_id,Long player_id);
 }

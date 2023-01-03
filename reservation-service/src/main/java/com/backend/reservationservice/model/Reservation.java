@@ -2,17 +2,20 @@ package com.backend.reservationservice.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@Document
 public class Reservation {
 
     @Id
@@ -29,10 +32,9 @@ public class Reservation {
 
     private Long pitch;
 
-
     private Date created_at=new Date();
 
-    @DocumentReference(lazy = true)
+    @DocumentReference
     private List<Payment> payments;
 
     public List<Long> getPlayers() {
@@ -40,5 +42,12 @@ public class Reservation {
             players=new ArrayList<>();
         }
         return players;
+    }
+
+    public List<Payment> getPayments() {
+        if(payments==null){
+            payments=new ArrayList<>();
+        }
+        return payments;
     }
 }

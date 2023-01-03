@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.ws.rs.PathParam;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,8 @@ public class UserController {
         return userRepository.test();
     }
 
-    @PostMapping("/byReservation")
-    public List<MyUser> userList(@RequestBody List<Long> players_ids){
+    @GetMapping("/byReservation")
+    public List<MyUser> userList(@RequestParam("players_ids") List<Long> players_ids,@RequestParam(value = "reservation_id",required = false) String reservation_id){
 //        List<MyUser> players=new ArrayList<>();
         return userRepository.findAllByIdIsIn(players_ids);
     }

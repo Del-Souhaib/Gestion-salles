@@ -55,9 +55,9 @@ public class ReservationController {
     }
 
     @PostMapping("")
-    public List<Reservation> addReservation(@RequestBody Reservation reservation)  {
+    public String addReservation(@RequestBody Reservation reservation)  {
        Reservation reservation1= reservationRepository.save(reservation);
-        return reservationRepository.findAllByPitch(reservation1.getPitch());
+        return reservation1.getId();
     }
 
     @PutMapping("")

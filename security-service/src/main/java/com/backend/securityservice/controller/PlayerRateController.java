@@ -30,7 +30,14 @@ public class PlayerRateController {
 
     @PostMapping("")
     public void addPlayerRate(@RequestBody PlayerRate playerRate)  {
-        playerRateRepository.save(playerRate);
+        PlayerRate existPlayerRate=playerRateRepository.findFirstByReservationAndPlayer_id(playerRate.getReservation(),playerRate.getPlayer_id());
+        if(existPlayerRate!=null){
+            existPlayerRate.setNb_stars(playerRate.getNb_stars());
+            playerRateRepository.save(existPlayerRate);
+        }
+        else{
+            playerRateRepository.save(playerRate);
+        }
     }
 
     @PutMapping("")
