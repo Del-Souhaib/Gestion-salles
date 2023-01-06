@@ -2,14 +2,14 @@ spring:
   application:
     name: notifications-service
 
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:mysql://pitches-managment-notification-service.ch2e01owm84h.us-east-1.rds.amazonaws.com:3306/pitchesManagmentNotificationService
-    username: admin
-    password: 123456789
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#  datasource:
+#    url: jdbc:mysql://pitches-managment-notification-service.ch2e01owm84h.us-east-1.rds.amazonaws.com:3306/pitchesManagmentNotificationService
+#    username: admin
+#    password: 123456789
 
   mail:
     host: email-smtp.us-east-1.amazonaws.com
