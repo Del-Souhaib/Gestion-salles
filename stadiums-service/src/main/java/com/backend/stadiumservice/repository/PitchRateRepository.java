@@ -14,6 +14,7 @@ public interface PitchRateRepository extends JpaRepository<PitchRate,Long> {
 
     void deleteByReservation(String reservation_id);
 
+    void deleteAllByPitch_idEquals(Long id);
 
     @Query("select pr , avg(pr.nb_stars) from PitchRate pr group by pr.pitch_id")
     List<PitchRate> findAllWithRate();

@@ -24,6 +24,7 @@ public interface UserRepository extends JpaRepository<MyUser,Long> {
 
 //    List<MyUser> findAllByIdIsInAndAndratAndRatesIsNull
 
+    List<MyUser> findAllByEmailContaining(String email);
     @Query(value = "select mu,sum(pr.nb_stars) from MyUser mu left join PlayerRate pr" , nativeQuery = true)
     List<MyUser> test();
 }

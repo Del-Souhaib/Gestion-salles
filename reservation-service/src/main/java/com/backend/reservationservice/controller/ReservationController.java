@@ -48,9 +48,16 @@ public class ReservationController {
     }
 
     @PostMapping("/addPlayerToReservation")
-    public void addPlayerToReservation(@PathParam("reservation_id") String reservation_id,@PathParam("player_id") Long player_id)  {
+    public void addPlayerToReservation(@RequestParam("reservation_id") String reservation_id,@RequestParam("player_id") List<Long> player_id)  {
         Reservation reservation=reservationRepository.findFirstById(reservation_id);
-        reservation.getPlayers().add(player_id);
+        for(Long id : player_id){
+            if(reservationRepository.existsAllByIdEqualsAndPlayersContaining(reservation_id,id)){
+                log.info(id+" exist");
+            }else{
+                log.info("not found");
+                reservation.getPlayers().add(id);
+            }
+        }
         reservationRepository.save(reservation);
     }
 
@@ -70,5 +77,11 @@ public class ReservationController {
     public void deleteReservation(@PathVariable("id") String id)  {
         reservationRepository.deleteById(id);
     }
+
+    @DeleteMapping("/deleteAll")
+    public void deleteAllReservations()  {
+        reservationRepository.deleteAll();
+    }
+
 
 }

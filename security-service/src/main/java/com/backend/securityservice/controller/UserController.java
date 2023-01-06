@@ -28,6 +28,12 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/searchByEmail")
+    public List<MyUser> userList(@RequestParam("email") String email){
+        return userRepository.findAllByEmailContaining(email);
+//        return userRepository.findAllByFirst_nameOrLast_nameContainingaAndRole_NomOOrRole_idIsNull(searchText,"Client");
+    }
+
     @GetMapping("/test")
     public List<MyUser> test(){
         return userRepository.test();

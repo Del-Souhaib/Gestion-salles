@@ -3,6 +3,7 @@ package com.backend.stadiumservice.controller;
 import com.backend.stadiumservice.model.Pitch;
 import com.backend.stadiumservice.model.PitchImage;
 import com.backend.stadiumservice.repository.PitchImageRepository;
+import com.backend.stadiumservice.repository.PitchRateRepository;
 import com.backend.stadiumservice.repository.PitchRepository;
 import com.backend.stadiumservice.service.StorageService;
 import com.backend.stadiumservice.service.StorageService2;
@@ -24,6 +25,9 @@ import java.util.List;
 public class PitchController {
     @Autowired
     private PitchRepository pitchRepository;
+
+    @Autowired
+    private PitchRateRepository pitchRateRepository;
 
     @Autowired
     private PitchImageRepository pitchImageRepository;
@@ -87,6 +91,7 @@ public class PitchController {
 
     @DeleteMapping("/{id}")
     public List<Pitch> deletePitch(@PathVariable("id") Long id) {
+//        pitchRateRepository.deleteAllByPitch_idEquals(id);
         pitchRepository.deleteById(id);
         return pitchRepository.findAll();
     }

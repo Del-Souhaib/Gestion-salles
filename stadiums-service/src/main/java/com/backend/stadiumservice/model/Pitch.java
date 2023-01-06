@@ -26,6 +26,7 @@ public class Pitch {
     private Integer capacity;
     private boolean covered;
 
+
     private Double price;
 
     private String location;
@@ -40,7 +41,7 @@ public class Pitch {
     @OneToMany(mappedBy = "pitch",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PitchImage> images;
 
-    @OneToMany(mappedBy = "pitch",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pitch",fetch = FetchType.EAGER,orphanRemoval = true)
     private List<PitchRate> pitchRates;
 
 
@@ -50,5 +51,6 @@ public class Pitch {
 //        }
 //        return images;
 //    }
+
 
 }

@@ -5,6 +5,7 @@ import com.backend.reservationservice.model.Reservation;
 import com.backend.reservationservice.repository.PaymentRepository;
 import com.backend.reservationservice.repository.ReservationRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/payments")
+@Slf4j
 public class PaymentController {
 
     @Autowired
@@ -35,9 +37,11 @@ public class PaymentController {
     }
 
     @PostMapping("/{ReservationId}")
-    public void addPayment(@RequestBody Payment payment, @PathVariable String ReservationId) throws IOException {
+    public void addPayment(@RequestBody Payment payment, @PathVariable("ReservationId") String ReservationId) throws IOException {
         Payment savedPayment1 = paymentRepository.save(payment);
+        log.info(ReservationId);
         Reservation reservation = reservationRepository.findFirstById(ReservationId);
+        log.info(reservation.getId());
         reservation.getPayments().add(savedPayment1);
         reservationRepository.save(reservation);
 

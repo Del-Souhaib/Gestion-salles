@@ -18,4 +18,6 @@ public interface ReservationRepository extends MongoRepository<Reservation,Strin
 
     boolean existsAllByDateReservation(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date);
 
+
+    boolean existsAllByIdEqualsAndPlayersContaining(String reservation_idid,Long player_id);
 }
